@@ -41,7 +41,7 @@ User.after('put', function(req, res, next) {
 */
 
 
-Task.register(router, '/task');
+Task.register(router, '/');
 
 
 

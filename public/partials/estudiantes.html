@@ -1,0 +1,33 @@
+<h2>Estudiantes</h2>
+<div id="searchBoxes">
+	<form class="form-horizontal">
+		<div class="form-group">
+	    	<label for="inputBuscar" class="col-sm-4 control-label">Buscar estudiante</label>
+	    	<div class="col-sm-4">
+	    		<input type="text" id="inputBuscar" class="form-control" placeholder="Buscar" ng-model="globalSearch.$" autofocus>
+	    	</div>
+	  	</div>
+	</form>
+	<!--
+	Name (Filters only in names)<input type="text" ng-model="globalSearch.name" ><br>
+	Age (Filters only age)<input type="text" ng-model="globalSearch.age" ><br>
+	Color (Filters only in color)<input type="text" ng-model="globalSearch.color" ><br>
+	-->
+</div>
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr> 
+				<th>Tipo de usuario</th><th>Email</th><th>ID</th> 
+			</tr> 
+		</thead> 
+		<tbody> 
+			<tr ng-repeat="est in estudiante.estudiantes | filter:globalSearch" > 
+				<td>{{est.type}}</td>
+				<td>{{est.email}}</td>
+				<td>{{est._id}}</td>
+
+			</tr> 
+		</tbody>
+	</table>
+</div>

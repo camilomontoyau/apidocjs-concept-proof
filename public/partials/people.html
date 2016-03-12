@@ -1,0 +1,16 @@
+<h2>Filtering by properties</h2>
+<div>
+<ul>
+	<li ng-repeat="person in persons | filter:globalSearch">
+		Name:{{person.name}} // Age: {{person.age}} \\ Color: {{person.color}}
+	</li>
+
+</ul>
+</div>
+<br>
+<div id="searchBoxes">
+Global Search (Filters in all properties)<input type="text" ng-model="globalSearch.$" ><br>
+Name (Filters only in names)<input type="text" ng-model="globalSearch.name" ><br>
+Age (Filters only age)<input type="text" ng-model="globalSearch.age" ><br>
+Color (Filters only in color)<input type="text" ng-model="globalSearch.color" ><br>
+</div>

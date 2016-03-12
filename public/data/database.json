@@ -1,0 +1,8 @@
+{
+	"records":[
+		{"name":"camilo", "age":"18", "color":"blue"},
+		{"name":"pepe", "age":"20", "color":"orange"},
+		{"name":"luis", "age":"15", "color":"red"},
+		{"name":"carlos", "age":"10", "color":"blue"}
+	]
+}
