@@ -12,7 +12,7 @@ var myApp = angular.module('todoApp', ['ngRoute','ui.router'])
 		url: "/overdue",
 		templateUrl: "partials/overdue.html",
 		controller: "overdueCtrl",
-		controllerAs:"overdue"
+		controllerAs:"overdues"
 	}).state("edit", {
 		url: "/:id/edit",
 		templateUrl: "partials/edit.html",

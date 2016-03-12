@@ -2,7 +2,21 @@ angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
 	var thispendings = this;
 	var prefix = '/api/task';
 	
-	$http.get(prefix).success(function(data){
+	var date = new Date();
+	var dd = date.getDate();
+    var mm = date.getMonth()+1; //January is 0!
+    var yyyy = date.getFullYear();
+
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    }
+
+    var today = yyyy+"-"+mm+"-"+dd;
+
+	$http.get(prefix+"?dueDate__gte="+today).success(function(data){
 		thispendings.pendings = data;
 	});
 
@@ -21,8 +35,10 @@ angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
 		)
 		{
 			$http.post(prefix,thispendings.task).success(function(data){
-				thispendings.pendings.push(data);
 				alert("Saved!");
+				$http.get(prefix+"?dueDate__gte="+today).success(function(data){
+					thispendings.pendings = data;
+				});
 			});	
 		}
 		else{
@@ -33,7 +49,7 @@ angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
 	thispendings.delete = function(id) {
 		$http.delete(prefix+'/'+id).success(function(data){
 			alert("Successfully deleted");
-			$http.get(prefix).success(function(data){
+			$http.get(prefix+"?dueDate__gte="+today).success(function(data){
 				thispendings.pendings = data;
 			});
 		});

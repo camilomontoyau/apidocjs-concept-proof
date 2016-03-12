@@ -46,6 +46,22 @@
 					"application/json"
 				],
 				"parameters":[
+					{
+						"in":"query",
+						"name":"dueDate__gte",
+						"description":"due Date filter",
+						"required":false,
+						"type":"string",
+						"example":"2016-03-16"
+					},
+					{
+						"in":"query",
+						"name":"dueDate__lt",
+						"description":"due Date filter",
+						"required":false,
+						"type":"string",
+						"example":"2016-03-16"
+					}
 				],
 				"responses":{
 					"200":{
