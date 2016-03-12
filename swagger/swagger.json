@@ -13,20 +13,12 @@
 			"url":"http://www.apache.org/licenses/LICENSE-2.0.html"
 		}
 	},
-	"host":"localhost:40000",
-	"basePath":"/api/v0",
+	"host":"localhost:3000",
+	"basePath":"/",
 	"tags":[
 		{
-			"name":"Auth",
-			"description":"Everything you need to authenticate",
-			"externalDocs":{
-				"description":"Find out more",
-				"url":"http://swagger.io"
-			}
-		},
-		{
-			"name":"Users",
-			"description":"Operations about user",
+			"name":"Task",
+			"description":"Task operations",
 			"externalDocs":{
 				"description":"Find out more about our store",
 				"url":"http://swagger.io"
@@ -37,14 +29,14 @@
 		"http"
 	],
 	"paths":{
-		"/authenticate":{
-			"post":{
+		"/task":{
+			"get":{
 				"tags":[
-					"Auth"
+					"Task"
 				],
-				"summary":"authenticate an API user",
-				"description":"Send the e-mail and password of a user to authenticate it",
-				"operationId":"authUser",
+				"summary":"Returns an Array of tasks",
+				"description":"This endpoint returns a list of task objects",
+				"operationId":"taskList",
 				"consumes":[
 					"application/json",
 					"application/xml"
@@ -54,98 +46,26 @@
 					"application/json"
 				],
 				"parameters":[
-					{
-						"in":"body",
-						"name":"body",
-						"description":"authentication object",
-						"required":true,
-						"schema":{
-							"$ref":"#/definitions/Auth"
-						}
-					}
 				],
 				"responses":{
-					"403":{
-						"description":"Authentication failed. Wrong user or password."
-					},
 					"200":{
-						"description":"Authentication worked fine, and you are authenticated"
-					}
-				}
-			}
-		},
-		"/me":{
-			"get":{
-				"tags":[
-					"Auth"
-				],
-				"summary":"Returns the current user",
-				"description":"If a user is authenticated it will be return that user object",
-				"operationId":"authMe",
-				"consumes":[
-					"application/json",
-					"application/xml"
-				],
-				"produces":[
-					"application/xml",
-					"application/json"
-				],
-				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
+						"description":"Returns an Array of task objects"
 					},
-					"200":{
-						"description":"Returns the current authenticated user"
-					}
-				}
-			}
-		},
-		"/users":{
-			"get":{
-				"tags":[
-					"Users"
-				],
-				"summary":"Returns an Array of users",
-				"description":"This endpoint retuns a list of user objects",
-				"operationId":"usersList",
-				"consumes":[
-					"application/json",
-					"application/xml"
-				],
-				"produces":[
-					"application/xml",
-					"application/json"
-				],
-				"parameters":[
-					{
-						"in":"query",
-						"name":"email",
-						"description":"email",
-						"type":"string"
+					"500":{
+						"description":"Internal server error"
 					},
-					{
-						"in":"query",
-						"name":"type",
-						"description":"type of user",
-						"type":"string"
-					}
-				],
-				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
-					},
-					"200":{
-						"description":"Returns Array of user objects"
+					"404":{
+						"description":"Not found"
 					}
 				}
 			},
 			"post":{
 				"tags":[
-					"Users"
+					"Task"
 				],
-				"summary":"Creates a user",
-				"description":"With this endpoint you can create a user",
-				"operationId":"usersCreate",
+				"summary":"Creates a Task",
+				"description":"With this endpoint you can create a task",
+				"operationId":"taskCreate",
 				"consumes":[
 					"application/json",
 					"application/xml"
@@ -158,34 +78,34 @@
 					{
 						"in":"body",
 						"name":"body",
-						"description":"User Object",
+						"description":"Task Object",
 						"required":true,
 						"schema":{
-							"$ref":"#/definitions/UserPost"
+							"$ref":"#/definitions/TaskPost"
 						}
 					}
 				],
 				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
-					},
 					"201":{
-						"description":"User is created, and returns the current User"
+						"description":"Task is created, and returns the current Task"
 					},
 					"400":{
-						"description":"Error because a mandatory property is missed, or other user Error"
+						"description":"Error if a mandatory property is missed, or other user Error"
+					},
+					"500":{
+						"description":"Internal server error"
 					}
 				}
 			}
 		},
-		"/users/{userId}":{
+		"/task/{taskId}":{
 			"get":{
 				"tags":[
-					"Users"
+					"Task"
 				],
-				"summary":"Get a user record",
-				"description":"This returns a user object putting its userId in the path",
-				"operationId":"usersFindById",
+				"summary":"Get a task record",
+				"description":"This returns a user object putting its taskId in the path",
+				"operationId":"taskFindById",
 				"consumes":[
 					"application/json",
 					"application/xml"
@@ -196,22 +116,19 @@
 				],
 				"parameters":[
 					{
-						"name":"userId",
+						"name":"taskId",
 						"in":"path",
 						"required":true,
-						"description":"ID of pet that needs to be updated",
+						"description":"ID of task that needs to be queried",
 						"type":"string"
 					}
 				],
 				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
-					},
 					"200":{
-						"description":"Returns a user object"
+						"description":"Returns a task object"
 					},
 					"404":{
-						"description":"if the user is not found"
+						"description":"if the task is not found"
 					},
 					"500":{
 						"description":"If Cast to ObjectId failed for value or internal server error"
@@ -220,11 +137,11 @@
 			},
 			"put":{
 				"tags":[
-					"Users"
+					"Task"
 				],
-				"summary":"Update a user",
-				"description":"With this endpoint you can update a user object",
-				"operationId":"usersUpdate",
+				"summary":"Updates a Task",
+				"description":"With this endpoint you can update a Task object",
+				"operationId":"taskUpdate",
 				"consumes":[
 					"application/json",
 					"application/xml"
@@ -240,29 +157,26 @@
 						"description":"User Object",
 						"required":true,
 						"schema":{
-							"$ref":"#/definitions/UserPost"
+							"$ref":"#/definitions/TaskPost"
 						}
 					},
 					{
-						"name":"userId",
+						"name":"taskId",
 						"in":"path",
 						"required":true,
-						"description":"ID of pet that needs to be updated",
+						"description":"ID of task that needs to be updated",
 						"type":"string"
 					}
 				],
 				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
-					},
 					"200":{
-						"description":"User is created, and returns the current User"
+						"description":"task is updated, and returns the current task"
 					},
 					"400":{
 						"description":"Error because a mandatory property is missed, or other user Error"
 					},
 					"404":{
-						"description":"if the user is not found"
+						"description":"if the task is not found"
 					},
 					"500":{
 						"description":"If Cast to ObjectId failed for value or internal server error"
@@ -271,11 +185,11 @@
 			},
 			"delete":{
 				"tags":[
-					"Users"
+					"Task"
 				],
-				"summary":"Deletes a user record",
-				"description":"Delete a user record with its ID",
-				"operationId":"usersDelete",
+				"summary":"Deletes a task record",
+				"description":"Deletes a Task record with its ID",
+				"operationId":"taskDelete",
 				"consumes":[
 					"application/json",
 					"application/xml"
@@ -286,22 +200,19 @@
 				],
 				"parameters":[
 					{
-						"name":"userId",
+						"name":"taskId",
 						"in":"path",
 						"required":true,
-						"description":"ID of pet that needs to be updated",
+						"description":"ID of Task that needs to be deleted",
 						"type":"string"
 					}
 				],
 				"responses":{
-					"403":{
-						"description":"Failed to verify token or token not provided."
-					},
 					"204":{
-						"description":"The user was deleted successfully"
+						"description":"The Task was deleted successfully"
 					},
 					"404":{
-						"description":"if the user is not found"
+						"description":"if the Task is not found"
 					},
 					"500":{
 						"description":"If Cast to ObjectId failed for value or internal server error"
@@ -318,45 +229,23 @@
 		}
 	},
 	"definitions":{
-		"Auth":{
+		"TaskPost":{
 			"type":"object",
 			"required":[
-				"email",
-				"password"
+				
 			],
 			"properties":{
-				"email":{
+				"name":{
 					"type":"string",
-					"example":"camilomontoya2@gmail.com"
+					"example":"This is a task name"
 				},
-				"password":{
-					"type":"string",
-					"example":"test4echo"
-				}
-			},
-			"xml":{
-				"name":"Pet"
-			}
-		},
-		"UserPost":{
-			"type":"object",
-			"required":[
-				"email",
-				"password",
-				"type"
-			],
-			"properties":{
-				"email":{
-					"type":"string",
-					"example":"camilomontoya2@gmail.com"
+				"dueDate":{
+					"type":"date",
+					"example":"2016-03-11"
 				},
-				"password":{
-					"type":"string",
-					"example":"test4echo"
-				},
-				"type":{
-					"type":"string",
-					"example":"admin_user"
+				"priority":{
+					"type":"number",
+					"example":1
 				}
 			},
 			"xml":{
