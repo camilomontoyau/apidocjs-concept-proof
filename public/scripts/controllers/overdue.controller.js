@@ -1,6 +1,7 @@
-angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
+angular.module('todoApp').controller("overdueCtrl",function ($state, $http) {
+	/*
 	var thispendings = this;
-	var prefix = '/api/task';
+	var prefix = '/task';
 	
 	$http.get(prefix).success(function(data){
 		thispendings.pendings = data;
@@ -29,17 +30,5 @@ angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
 			alert("please fill all the fields!");
 		}
 	};
-
-	thispendings.delete = function(id) {
-		$http.delete(prefix+'/'+id).success(function(data){
-			alert("Successfully deleted");
-			$http.get(prefix).success(function(data){
-				thispendings.pendings = data;
-			});
-		});
-	};
-
-	thispendings.edit = function(id) {
-		$state.go('/'+id+'/edit');
-	};
+	*/
 });

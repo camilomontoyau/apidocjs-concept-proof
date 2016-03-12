@@ -64,7 +64,9 @@
         <td>{{pending.name}}</td>
         <td>{{pending.dueDate}}</td>
         <td>{{pending.priority}}</td>
-        <td><button type="button" ng-click="" class="btn btn-link"><i class="fa fa-pencil"></i></button><button type="button" ng-click="" class="btn btn-link"><i class="fa fa-trash"></i></button></td>
+        <td>
+          <a href="/#/{{pending._id}}/edit" class="btn btn-link"><i class="fa fa-pencil"></i></a>
+          <button type="button" ng-click="pendings.delete(pending._id)" class="btn btn-link"><i class="fa fa-trash"></i></button></td>
       </tr> 
     </tbody>
   </table>
