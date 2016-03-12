@@ -1,27 +1,42 @@
-<h2>Colegios</h2>
+<h2>Pending Tasks</h2>
 <div id="searchBoxes">
   <button type="button" ng-click="collapsed=!collapsed" class="btn btn-link btn-sm">Add New Task <i class="fa fa-minus-square-o" ng-show="collapsed"></i><i class="fa fa-plus-square-o" ng-hide="collapsed"></i></button>
   <form class="form-horizontal well" ng-show="collapsed">
-    <div class="form-group">
-        <label for="inputSelect" class="col-sm-4 control-label">Campo de busqueda</label>
+      
+      <div class="form-group">
+        <label for="inputName" class="col-sm-4 control-label" >Name</label>
         <div class="col-sm-4">
-          <select class="form-control" ng-model="colegio.selBusquedaAvanzada">
-            <option value="nombreColegio">Nombre Colegio</option>
-            <option value="codigoMen">Código MEN</option>
-            <option value="nombreDepartamento">Departamento</option>
-            <option value="nombreMunicipio">Municipio</option>
-            <option value="secretaria">Secretaría</option>
+          <input type="text" id="inputName" class="form-control" placeholder="Task description" ng-model="pendings.task.name" required="required" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputDueDate" class="col-sm-4 control-label">Due Date</label>
+        <div class="col-sm-4">
+          <input type="date" id="inputDueDate" class="form-control" min="2016-03-11" placeholder="yyyy-MM-dd" ng-model="pendings.task.dueDate" required="required" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selPriority" class="col-sm-4 control-label">Priority</label>
+        <div class="col-sm-4">
+          <select id="selPriority" class="form-control" ng-model="pendings.task.priority" required="required" >
+            <option value="1" selected="selected" >1</option>
+            <option value="2" >2</option>
+            <option value="3" >3</option>
+            <option value="4" >4</option>
+            <option value="5" >5</option>
           </select>
         </div>
       </div>
+
       <div class="form-group">
-        <label for="inputBuscar" class="col-sm-4 control-label">Texto busqueda</label>
         <div class="col-sm-4">
-          <input type="text" id="inputBuscar" class="form-control" placeholder="Ingrese acá el texto de busqueda" ng-model="colegio.txtBusquedaAvanzada" >
+          <button type="button" class="btn btn-primary" ng-click="pendings.save()">Save <i class="fa fa-floppy-o"></i></button>
         </div>
 
       </div>
-      <button type="button" class="btn btn-primary" ng-click="">Buscar <i class="fa fa-search"></i></button>
+      
   </form>
 </div>
 <div class="table-responsive">
@@ -30,7 +45,7 @@
       <tr> 
         <!--<th>ID</th>-->
         <th>
-          <button type="button" ng-click="pendings.order('name')" class="btn btn-default">NAME <i class="fa fa-sort"></i></button><br>
+          <button type="button" ng-click="pendings.order('name')" class="btn btn-default">Name <i class="fa fa-sort"></i></button><br>
           <input type="text" class="form-control" ng-model="pendings.filter.name">
         </th>
         <th>

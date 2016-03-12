@@ -1,0 +1,32 @@
+<h2>Overdue Tasks</h2>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr> 
+        <!--<th>ID</th>-->
+        <th>
+          <button type="button" ng-click="pendings.order('name')" class="btn btn-default">Name <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="pendings.filter.name">
+        </th>
+        <th>
+          <button type="button" ng-click="pendings.order('dueDate')" class="btn btn-default">Due Date <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="pendings.filter.dueDate">
+          </th>
+          <th>
+          <button type="button" ng-click="pendings.order('priority')" class="btn btn-default">Priority <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="pendings.filter.priority">
+        </th>
+      </tr> 
+    </thead> 
+    <tbody> 
+      <tr ng-repeat="pending in pendings.pendings | filter:pendings.filter | orderBy:pendings.predicate:pendings.reverse" > 
+        <!--<td>{{col._id}}</td>-->
+        <td>{{pending.name}}</td>
+        <td>{{pending.dueDate}}</td>
+        <td>{{pending.priority}}</td>
+        <td><button type="button" ng-click="" class="btn btn-link"><i class="fa fa-pencil"></i></button><button type="button" ng-click="" class="btn btn-link"><i class="fa fa-trash"></i></button></td>
+      </tr> 
+    </tbody>
+  </table>
+</div>

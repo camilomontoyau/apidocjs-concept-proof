@@ -12,4 +12,21 @@ angular.module('todoApp').controller("pendingCtrl",function ($state, $http) {
 			thispendings.reverse = (thispendings.predicate === predicate) ? !thispendings.reverse : false;
 		    thispendings.predicate = predicate;
 		};
+
+		thispendings.save = function() {
+			if(
+				typeof thispendings.task!='undefined'
+				&& typeof thispendings.task.name!='undefined' 
+				&& typeof thispendings.task.dueDate!='undefined' 
+			)
+			{
+				$http.post(prefix,thispendings.task).success(function(data){
+					thispendings.pendings.push(data);
+					alert("Saved!");
+				});	
+			}
+			else{
+				alert("please fill all the fields!");
+			}
+		};
 	});
