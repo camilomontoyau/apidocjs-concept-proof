@@ -14,7 +14,7 @@ var myApp = angular.module('todoApp', ['ngRoute','ui.router'])
 		controller: "overdueCtrl",
 		controllerAs:"overdues"
 	}).state("edit", {
-		url: "/:id/edit",
+		url: "/edit/{id}",
 		templateUrl: "partials/edit.html",
 		controller: "editCtrl",
 		controllerAs:"edit"

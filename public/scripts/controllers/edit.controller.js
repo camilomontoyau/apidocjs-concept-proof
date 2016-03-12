@@ -1,42 +1,33 @@
-angular.module('todoApp').controller("editCtrl",function ($state, $http) {
-	/*
-	var thispendings = this;
-	var prefix = '/task';
-	
-	$http.get(prefix).success(function(data){
-		thispendings.pendings = data;
+angular.module('todoApp').controller("editCtrl",function ($state, $http, $stateParams) {
+	var thisedits = this;
+	var prefix = '/api/task';
+	thisedits.currentId = $stateParams.id;
+
+	$http.get(prefix+"/"+thisedits.currentId).success(function(data){
+		thisedits.task = data;
+		var splittedDate = thisedits.task.dueDate.split("T")[0];
+		var date = splittedDate.split("-");
+		var dueDate = date[0]+"-"+date[1]+"-"+date[2];
+		thisedits.task.dueDate = dueDate
+		
 	});
 
-	thispendings.predicate = 'name';
-	thispendings.reverse = true;
-	thispendings.order = function(predicate) {
-		thispendings.reverse = (thispendings.predicate === predicate) ? !thispendings.reverse : false;
-	    thispendings.predicate = predicate;
-	};
-
-	thispendings.save = function() {
+	thisedits.save = function() {
 		if(
-			typeof thispendings.task!='undefined'
-			&& typeof thispendings.task.name!='undefined' 
-			&& typeof thispendings.task.dueDate!='undefined' 
+			typeof thisedits.task!='undefined'
+			&& typeof thisedits.task.name!='undefined' 
+			&& typeof thisedits.task.dueDate!='undefined' 
 		)
 		{
-			$http.post(prefix,thispendings.task).success(function(data){
-				thispendings.pendings.push(data);
+			$http.put(prefix+"/"+thisedits.currentId,thisedits.task).success(function(data){
 				alert("Saved!");
+				$state.go('pendings');
 			});	
 		}
 		else{
 			alert("please fill all the fields!");
 		}
 	};
-
-	thispendings.delete = function(id) {
-		
-	};
-
-	thispendings.edit = function(id) {
-		$state.go('/'+id+'/edit');
-	};
-	*/
 });
+
+
