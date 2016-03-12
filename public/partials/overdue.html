@@ -6,21 +6,21 @@
       <div class="form-group">
         <label for="inputName" class="col-sm-4 control-label" >Name</label>
         <div class="col-sm-4">
-          <input type="text" id="inputName" class="form-control" placeholder="Task description" ng-model="pendings.task.name" required="required" >
+          <input type="text" id="inputName" class="form-control" placeholder="Task description" ng-model="overdues.task.name" required="required" >
         </div>
       </div>
 
       <div class="form-group">
         <label for="inputDueDate" class="col-sm-4 control-label">Due Date</label>
         <div class="col-sm-4">
-          <input type="date" id="inputDueDate" class="form-control" min="2016-03-01" placeholder="yyyy-MM-dd" ng-model="pendings.task.dueDate" required="required" >
+          <input type="date" id="inputDueDate" class="form-control" min="2016-03-01" placeholder="yyyy-MM-dd" ng-model="overdues.task.dueDate" required="required" >
         </div>
       </div>
 
       <div class="form-group">
         <label for="selPriority" class="col-sm-4 control-label">Priority</label>
         <div class="col-sm-4">
-          <select id="selPriority" class="form-control" ng-model="pendings.task.priority" required="required" >
+          <select id="selPriority" class="form-control" ng-model="overdues.task.priority" required="required" >
             <option value="1" selected="selected" >1</option>
             <option value="2" >2</option>
             <option value="3" >3</option>
@@ -32,7 +32,7 @@
 
       <div class="form-group">
         <div class="col-sm-4">
-          <button type="button" class="btn btn-primary" ng-click="pendings.save()">Save <i class="fa fa-floppy-o"></i></button>
+          <button type="button" class="btn btn-primary" ng-click="overdues.save()">Save <i class="fa fa-floppy-o"></i></button>
         </div>
 
       </div>
@@ -45,28 +45,28 @@
       <tr> 
         <!--<th>ID</th>-->
         <th>
-          <button type="button" ng-click="pendings.order('name')" class="btn btn-default">Name <i class="fa fa-sort"></i></button><br>
-          <input type="text" class="form-control" ng-model="pendings.filter.name">
+          <button type="button" ng-click="overdues.order('name')" class="btn btn-default">Name <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="overdues.filter.name">
         </th>
         <th>
-          <button type="button" ng-click="pendings.order('dueDate')" class="btn btn-default">Due Date <i class="fa fa-sort"></i></button><br>
-          <input type="text" class="form-control" ng-model="pendings.filter.dueDate">
+          <button type="button" ng-click="overdues.order('dueDate')" class="btn btn-default">Due Date <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="overdues.filter.dueDate">
           </th>
           <th>
-          <button type="button" ng-click="pendings.order('priority')" class="btn btn-default">Priority <i class="fa fa-sort"></i></button><br>
-          <input type="text" class="form-control" ng-model="pendings.filter.priority">
+          <button type="button" ng-click="overdues.order('priority')" class="btn btn-default">Priority <i class="fa fa-sort"></i></button><br>
+          <input type="text" class="form-control" ng-model="overdues.filter.priority">
         </th>
       </tr> 
     </thead> 
     <tbody> 
-      <tr ng-repeat="pending in pendings.pendings | filter:pendings.filter | orderBy:pendings.predicate:pendings.reverse" > 
+      <tr ng-repeat="overdue in overdues.overdues | filter:overdues.filter | orderBy:overdues.predicate:overdues.reverse" > 
         <!--<td>{{col._id}}</td>-->
-        <td>{{pending.name}}</td>
-        <td>{{pending.dueDate}}</td>
-        <td>{{pending.priority}}</td>
+        <td><span class="overdue-task">{{overdue.name}}</span></td>
+        <td><span class="overdue-task">{{overdue.dueDate}}</span></td>
+        <td><span class="overdue-task">{{overdue.priority}}</span></td>
         <td>
-          <a href="/#/{{pending._id}}/edit" class="btn btn-link"><i class="fa fa-pencil"></i></a>
-          <button type="button" ng-click="pendings.delete(pending._id)" class="btn btn-link"><i class="fa fa-trash"></i></button></td>
+          <a href="/#/{{overdue._id}}/edit" class="btn btn-link"><i class="fa fa-pencil"></i></a>
+          <button type="button" ng-click="overdues.delete(overdue._id)" class="btn btn-link"><i class="fa fa-trash"></i></button></td>
       </tr> 
     </tbody>
   </table>

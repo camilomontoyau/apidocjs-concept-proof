@@ -17,7 +17,7 @@ angular.module('todoApp').controller("overdueCtrl",function ($state, $http) {
     var today = yyyy+"-"+mm+"-"+dd;
 
 	$http.get(prefix+"?dueDate__lt="+today).success(function(data){
-		thisoverdues.pendings = data;
+		thisoverdues.overdues = data;
 	});
 
 	thisoverdues.predicate = 'name';
@@ -37,7 +37,7 @@ angular.module('todoApp').controller("overdueCtrl",function ($state, $http) {
 			$http.post(prefix,thisoverdues.task).success(function(data){
 				alert("Saved!");
 				$http.get(prefix+"?dueDate__lt="+today).success(function(data){
-					thisoverdues.pendings = data;
+					thisoverdues.overdues = data;
 				});
 			});	
 		}
@@ -50,7 +50,7 @@ angular.module('todoApp').controller("overdueCtrl",function ($state, $http) {
 		$http.delete(prefix+'/'+id).success(function(data){
 			alert("Successfully deleted");
 			$http.get(prefix+"?dueDate__lt="+today).success(function(data){
-				thisoverdues.pendings = data;
+				thisoverdues.overdues = data;
 			});
 		});
 	};
