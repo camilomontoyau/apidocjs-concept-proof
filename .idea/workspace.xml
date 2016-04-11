@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f820c87-1b2d-45bd-a920-0fbd10af1f3c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apidoc.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/apidoc-test.iml" afterPath="$PROJECT_DIR$/.idea/apidoc-test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/index.js" afterPath="$PROJECT_DIR$/api/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/app.js" afterPath="$PROJECT_DIR$/server/app.js" />
     </list>
     <ignored path="apidoc-test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -237,12 +232,20 @@
       <workItem from="1460399441858" duration="1564000" />
       <workItem from="1460401126470" duration="70000" />
       <workItem from="1460401794973" duration="5502000" />
-      <workItem from="1460407377071" duration="207000" />
+      <workItem from="1460407377071" duration="308000" />
     </task>
+    <task id="LOCAL-00001" summary="get AND post concept proof of apidoc">
+      <created>1460407622174</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1460407622174</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8096000" />
+    <option name="totallyTimeSpent" value="8197000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="-3" width="1366" height="771" extended-state="6" />
@@ -280,7 +283,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="get AND post concept proof of apidoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="get AND post concept proof of apidoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
