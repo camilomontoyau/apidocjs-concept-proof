@@ -4,7 +4,8 @@
   "description": "rest api microservice for user administration and authentication with node jwt",
   "main": "./server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "apidoc": "rm -rf apidoc/; apidoc -i ./ -o apidoc/ -e node_modules/ -e swagger/"
   },
   "keywords": [
     "api",
@@ -20,5 +21,9 @@
     "express": "^4.13.4",
     "mongoose": "^4.4.3",
     "node-restful": "^0.2.5"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-apidoc": "^0.11.0"
   }
 }
