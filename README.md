@@ -15,7 +15,7 @@ nodejs-user-authentication is a restful api template for user authentication in 
 ### Installation
 
 ```sh
-$ git clone https://github.com/kerosine9/nodejs-user-authentication.git testapp
+$ git clone https://github.com/kerosine9/apidocjs-concept-proof.git testapp
 $ cd testapp
 $ npm install
 ```
