@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/api', api);
 app.use('/swagger', express.static('swagger'));
+app.use('/apidoc', express.static('apidoc'));
 app.use('/', express.static('public'));
 
 

@@ -1,6 +1,6 @@
 # Logs
 logs
-*.log
+
 npm-debug.log*
 
 # Runtime data
@@ -32,3 +32,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# apidoc
+apidoc
+
+# webstorm files
+.idea
